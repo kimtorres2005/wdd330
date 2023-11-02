@@ -1,8 +1,35 @@
-import { setLocalStorage } from "./utils.mjs";
-import { findProductById } from "./productData.mjs";
+import { setLocalStorage, getLocalStorage, getParam } from "./utils.mjs";
+import productDetails from "./productDetails.mjs";
+import { findProductById } from "./externalServices.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
+
+const productId = getParam("product");
+productDetails(productId);
+
+if (!getLocalStorage("so-cart")) {
+  setLocalStorage("so-cart", []);
+}
 
 function addProductToCart(product) {
-  setLocalStorage("so-cart", product);
+  let cart = getLocalStorage("so-cart");
+
+  if (!Array.isArray(cart)) {
+    cart = [];
+  }
+
+  const existingProduct = cart.find((item) => item.Id === product.Id);
+
+  if (existingProduct) {
+    existingProduct.Quantity += 1;
+  } else {
+    product.Quantity = 1;
+
+    cart.push(product);
+  }
+
+  setLocalStorage("so-cart", cart);  
 }
 
 async function addToCartHandler(e) {
