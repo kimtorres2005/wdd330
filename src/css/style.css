@@ -202,6 +202,105 @@ button {
   grid-column: 3;
 }
 
+/* styling for the cart cards */
+.cart-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.cart-card .remove-item {
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 30px;
+  margin-left: 10px;
+  color: red;
+}
+
+.cart-card .cart-card__image img {
+  max-width: 100px;
+  max-height: 100px;
+  margin-right: 30px;
+}
+
+.cart-card__details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  max-width: 250px;
+}
+
+.cart-card__details .cost {
+  font-size: 16px;
+  color: #333;
+  padding: 10px;
+}
+
+.cart-card__details .quantity {
+  font-size: 16px;
+  color: #777;
+  padding: 10px;
+}
+
+.cart-card .card-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #777;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+/* Cart Animation */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* .cart-icon {
+  display: inline-block;
+  animation-name: spin;
+  animation-duration: 2s; 
+  animation-timing-function: linear; 
+  animation-iteration-count: infinite; 
+} */
+.animation {
+  animation: cart-anim 1.5s linear;
+}
+
+/* Styling for Category Images */
+.categoryBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  text-align: center;
+  margin-left: 30px;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -219,4 +318,8 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+.remove-item {
+  cursor: pointer;
 }
